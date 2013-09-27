@@ -1,4 +1,16 @@
-(function() {
+(function (factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define(['marionette', 'underscore'], factory);
+    } else if (typeof exports === 'object') {
+        // Node/CommonJS
+        factory(require('marionette'), require('underscore'));
+    } else {
+        // Browser globals
+        factory(Backbone.Marionette, _);
+    }
+}(function(Marionette, _) {
+    
     var Marionette = Backbone.Marionette
     var originalCollectionView = Marionette.CollectionView
     
@@ -144,4 +156,4 @@
             }
         }
     })
-})();
+}));
